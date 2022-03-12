@@ -5,7 +5,7 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 from django.contrib.auth.models import User
 
-from websocket.signals import S_user_connected_to_websocket, S_user_disconnected_from_websocket
+from django_websocket.signals import S_user_connected_to_websocket, S_user_disconnected_from_websocket
 
 
 class BaseWebsocketConsumer(WebsocketConsumer, ABC):

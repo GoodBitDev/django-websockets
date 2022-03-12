@@ -1,12 +1,12 @@
 from setuptools import setup
 
 PACKAGES = [
-    "payments",
+    "django_websocket",
 ]
 
 
 setup(
-    name="django-payments",
+    name="django-websocket",
     author="Enes Gulakhmet",
     author_email="wwho.mann.3@gmail.com",
     description="Django websocket library",
@@ -34,6 +34,7 @@ setup(
     install_requires=[
         "Django>=3.2",
         "requests>=1.2.0",
+        "channels>=3.0.3"
     ],
     zip_safe=False,
 )

@@ -3,7 +3,7 @@ from enum import Enum
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
-from websocket.consumers import BaseWebsocketConsumer
+from django_websocket.consumers import BaseWebsocketConsumer
 
 
 class WebSocketService:

@@ -17,7 +17,7 @@ from django.apps import AppConfig
 
 class WebsocketConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'websocket'
+    name = 'django_websocket'
 
     def ready(self):
-        import websocket.signals
+        import django_websocket.signals
