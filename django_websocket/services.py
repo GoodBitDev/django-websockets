@@ -46,7 +46,7 @@ class WebSocketService:
             }
         )
 
-    def send_message(self, consumer, data: dict, group: str, event: Enum):
+    def send_message(self, consumer, data: dict, group: str, event: Enum = None):
         """
         Отправляет сообщение в указанный consumer, который наследуется от GroupWebsocketConsumer.
 
@@ -58,5 +58,6 @@ class WebSocketService:
 
         assert issubclass(consumer, BaseWebsocketConsumer)
 
-        self._send_to_group(group, data, consumer.handler_func_name, event_id=event.value)
+        event_id = event.value if event else None
+        self._send_to_group(group, data, consumer.handler_func_name, event_id=event_id)
 
