@@ -12,7 +12,7 @@ def get_user(token: str) -> User:
     return auth.get_user(auth.get_validated_token(token))
 
 
-class TokenAuthMiddleware:
+class QueryParamTokenAuthMiddleware:
     def __init__(self, app):
         self.app = app
 

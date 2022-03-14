@@ -3,7 +3,7 @@ from abc import ABC
 
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 
 from django_websocket.signals import S_user_connected_to_websocket, S_user_disconnected_from_websocket
 
@@ -30,7 +30,11 @@ class BaseWebsocketConsumer(WebsocketConsumer, ABC):
         return f"{self.group_prefix}_{group_id}"
 
     def get_user_from_scope(self) -> User:
-        return self.scope['url_route']['kwargs']['user']
+        try:
+            user = self.scope['url_route']['kwargs']['user']
+        except KeyError:
+            user = AnonymousUser()
+        return user
 
     def connect(self):
         async_to_sync(self.channel_layer.group_add)(self.get_group_name(), self.channel_name)
